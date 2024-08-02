@@ -29,20 +29,6 @@ const getAllUsers = async (req, res) => {
 };
 
 const remove = async (req, res) => {
-  // const { id } = req.body
-  // console.log('remove id ', id)
-  // const user = await prisma.user.delete({
-  //   where: {
-  //     id
-  //   }
-  // })
-  // if (user) {
-  //   // res.status(205)
-  //   res.status(204).json(OK)
-  // } else {
-  //   res.status(500).json({ message: 'не удалось удалить сотрудника' })
-  // }
-  // console.log('remove user id ', user)
   try {
     const { id } = req.body
     console.log('remove id ', id)
@@ -55,6 +41,21 @@ const remove = async (req, res) => {
     res.status(204).json({ message: 'пользователь успешно удален' })
   } catch {
     res.status(500).json({ message: 'не удалось удалить сотрудника' })
+  }
+}
+
+const edit = async (req, res) => {
+  try {
+    const data = req.body
+    const id = data.id
+    console.log('edit data ', data)
+    console.log('edit id ', id)
+    await prisma.user.update({
+      where: { id }, data
+    })
+    res.status(204).json('OK')
+  } catch {
+    res.status(400).json({ message: 'не удалось изменить сотрудника' })
   }
 }
 
@@ -77,5 +78,6 @@ module.exports = {
   add,
   getAllUsers,
   remove,
+  edit,
   getUserByName
 };
