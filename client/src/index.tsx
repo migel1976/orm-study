@@ -6,7 +6,7 @@ import { store } from './app/store';
 // import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Paths } from './paths'
-import User from './pages/user'
+import { User } from './pages/user'
 import './index.css'
 
 
