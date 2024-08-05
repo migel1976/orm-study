@@ -17,12 +17,11 @@ const root = createRoot(container);
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    // element: <h1>home</h1>
-    element: <User />
+    element: <h1>home</h1>
   },
   {
     path: Paths.user,
-    element: <h1>user</h1>
+    element: <User />
   },
 ])
 
